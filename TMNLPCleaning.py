@@ -23,9 +23,15 @@ output_file = "/Users/banana/Desktop/TextMining/train_clean_identity.csv"
 def blacklist(string):
     string = str(string)
     string = string.lower()
-    blacklistedWords = ['\\n', '\\r', '@', '"', "(talk)", "/talk/"]
+    blacklistedWords = ['\\n', '\\r', '@', '"', "(talk)", "/talk/", "|", "{", "}"]
     for x in range(len(blacklistedWords)):
         string = str(string).replace(blacklistedWords[x],"")
+        string = str(string).replace("  ", " ")
+        string = str(string).replace("::", ":")
+        string = str(string).replace("==", "=")
+        string = str(string).replace("--", "-")
+        string = str(string).replace("__", "_")
+
     return string
 
 
@@ -34,6 +40,8 @@ def writeToFile(writer, id, content, deleted):
 
 
 with open(input_file, "r", encoding="utf-8") as csvfile:
+    row_count = (sum(1 for line in open(input_file))*0.2839)
+    print(row_count)
     output_file = open(output_file, "w", encoding="utf-8")
     writer = csv.writer(output_file)
     reader = csv.DictReader(csvfile)
@@ -52,10 +60,9 @@ with open(input_file, "r", encoding="utf-8") as csvfile:
             content = row["comment_text"]
             content = blacklist(content)
             deleted = row[name_of_row]
-            print([id, content, deleted])
+            #print([id, content, deleted])
             writeToFile(writer, id, content, deleted)
             ids = ids +1
-
 
         if(row[name_of_row] == "1" and truth >= 0 or row["toxic"] == "True" and truth >= 0):
             truth = truth-1
@@ -63,12 +70,14 @@ with open(input_file, "r", encoding="utf-8") as csvfile:
             content = row["comment_text"]
             content = blacklist(content)
             deleted = row[name_of_row]
-            print([id, content, deleted])
+            #print([id, content, deleted])
             writeToFile(writer, id, content, deleted)
             ids = ids +1
+
         if(truth == 0 and false == 0):
             output_file.close()
             exit()
+
         else:
-            print("truth : ", truth)
-            print("false : ", false)
+            print(str((ids/row_count)*100)[:5] + " %")
+
