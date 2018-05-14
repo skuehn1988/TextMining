@@ -16,9 +16,9 @@ import csv
 # ToDo HelpOut Embedding
 # Todo https://en.wikipedia.org/wiki/Bootstrap_aggregating
 
-
-input_file = "/Users/banana/Desktop/TextMining/train.csv"
-output_file = "/Users/banana/Desktop/TextMining/train_clean_identity.csv"
+path = "/Users/banana/Desktop/TextMining/"
+input_file = "/Users/banana/Desktop/TextMining/train_preprocessed.csv"
+output_file = "/Users/banana/Desktop/TextMining/train_preprocessed_clean_identity.csv"
 
 def blacklist(string):
     string = str(string)
@@ -35,49 +35,72 @@ def blacklist(string):
     return string
 
 
-def writeToFile(writer, id, content, deleted):
-    writer.writerow([id, content, deleted])
+def writeToFile(writer, id, content, deleted, deleted_):
+    writer.writerow(["__label__" + deleted + " " + "__label__" + deleted_ + " " + content])
+    writer_txt.write("__label__" + deleted + " " + "__label__" + deleted_ + " " + content + "\n")
+
 
 
 with open(input_file, "r", encoding="utf-8") as csvfile:
-    row_count = (sum(1 for line in open(input_file))*0.2839)
+    row_count = (sum(1 for line in open(input_file)))
     print(row_count)
     output_file = open(output_file, "w", encoding="utf-8")
+    writer_txt = open(path+"output.txt", "w")
     writer = csv.writer(output_file)
     reader = csv.DictReader(csvfile)
     data = [row for row in reader]
-    writer.writerow(["id", "content", "deleted"])
+    #writer.writerow(["id", "content", "deleted"])
     ids = 0
     # set number of ratio here or set a very high number no ratio
-    truth = 200000
-    false = 200000
+   # truth = 200000
+    #false = 200000
      # place column name here (toxic , identity_hate)
     name_of_row = "identity_hate"
+    name_of_row_ = "toxic"
     for row in data:
-        if(row[name_of_row] == "0" and false >= 0 or row["toxic"] == "False" and false >= 0):
-            false = false-1
+        #if(row[name_of_row] == "0" and false >= 0 or row[name_of_row_] == "0" and false >= 0):
+           # false = false-1
             id = row["id"]
             content = row["comment_text"]
             content = blacklist(content)
             deleted = row[name_of_row]
+            deleted_= row[name_of_row_]
+            if(deleted == "0.0"):
+                deleted = str(deleted)
+                deleted = "0"
+
+            if(deleted_ == "0.0"):
+                deleted_ = str(deleted_)
+                deleted_ = "0"
+
+            if(deleted == "1.0"):
+                deleted = str(deleted)
+                deleted = "1"
+
+            if(deleted_ == "1.0"):
+                deleted_ = str(deleted_)
+                deleted_ = "1"
+
             #print([id, content, deleted])
-            writeToFile(writer, id, content, deleted)
+            writeToFile(writer, id, content, deleted, deleted_)
             ids = ids +1
 
-        if(row[name_of_row] == "1" and truth >= 0 or row["toxic"] == "True" and truth >= 0):
-            truth = truth-1
-            id = row["id"]
-            content = row["comment_text"]
-            content = blacklist(content)
-            deleted = row[name_of_row]
-            #print([id, content, deleted])
-            writeToFile(writer, id, content, deleted)
-            ids = ids +1
+        # if(row[name_of_row] == "1" and truth >= 0 or row[name_of_row_] == "1" and truth >= 0):
+        #     truth = truth-1
+        #     id = row["id"]
+        #     content = row["comment_text"]
+        #     content = blacklist(content)
+        #     deleted = row[name_of_row]
+        #     deleted_= row[name_of_row_]
+        #
+        #     #print([id, content, deleted])
+        #     writeToFile(writer, id, content, deleted, deleted_)
+        #     ids = ids +1
+        #
+        # if(truth == 0 and false == 0):
+        #     output_file.close()
+        #     exit()
 
-        if(truth == 0 and false == 0):
-            output_file.close()
-            exit()
-
-        else:
+        #else:
             print(str((ids/row_count)*100)[:5] + " %")
 
