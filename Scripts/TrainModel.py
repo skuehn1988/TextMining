@@ -14,7 +14,8 @@ from __future__ import unicode_literals
 from __future__ import division, absolute_import, print_function
 
 import os
-from fastText import train_supervised
+#from fastText import train_supervised
+import fasttext
 
 user = "banana"
 
