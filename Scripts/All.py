@@ -27,21 +27,34 @@ def blacklist(string):
     return string
 
 
-def writeToFile(writer, id, content, deleted, deleted_):
-    if deleted is "hate":
-        writer.writerow(["__label__" + deleted + " " + content])
-        writer_txt.write("__label__" + deleted + " " + content + "\n")
+def writeToFile(writer, id, content, label):
+    deleted = "__label__" + label
+    if label is "1":
+        writer.writerow([deleted ,content])
+        writer_txt.write("__label__" + label + " " + content + "\n")
+        print("1")
+    if label is "0":
+        writer.writerow([deleted ,content])
+        writer_txt.write("__label__" + label + " " + content + "\n")
+        print("0")
     else:
-        writer.writerow(["__label__" + deleted + " " + content])
-        writer_txt.write("__label__" + deleted + " " + content + "\n")
+        print("something is wrong")
+
 
 
 with open(input_file, "r", encoding="utf-8") as csvfile:
     row_count = (sum(1 for line in open(input_file)))
     print(row_count)
+
     output_file = open(output_file, "w", encoding="utf-8")
+    output_file_hate = open(output_file_hate, "w", encoding="utf-8")
+
     writer_txt = open(path+"output.txt", "w")
+    writer_txt_ = open(path+"output_.txt", "w")
+
     writer = csv.writer(output_file)
+    writer_ = csv.writer(output_file_hate)
+
     reader = csv.DictReader(csvfile)
     data = [row for row in reader]
     ids = 0
@@ -57,21 +70,23 @@ with open(input_file, "r", encoding="utf-8") as csvfile:
             deleted_= row[name_of_row_]
             if(deleted == "0.0"):
                 deleted = str(deleted)
-                deleted = "nohate"
+                deleted = "0"
 
             if(deleted_ == "0.0"):
                 deleted_ = str(deleted_)
-                deleted_ = "notoxic"
+                deleted_ = "0"
 
             if(deleted == "1.0"):
                 deleted = str(deleted)
-                deleted = "hate"
+                deleted = "1"
 
             if(deleted_ == "1.0"):
                 deleted_ = str(deleted_)
-                deleted_ = "toxic"
+                deleted_ = "1"
 
-            writeToFile(writer, id, content, deleted, deleted_)
+            writeToFile(writer, id, content, deleted)
+            writeToFile(writer_, id, content, deleted_)
+
             ids = ids +1
 
             print(str((ids/row_count)*100)[:5] + " %")

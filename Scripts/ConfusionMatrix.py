@@ -2,6 +2,9 @@ import pandas as pd
 from sklearn import metrics
 from sklearn.metrics import classification_report
 
+
+# Make Prediction out of Binary Model
+
 categories = ["deleted"]
 
 user = "banana"
