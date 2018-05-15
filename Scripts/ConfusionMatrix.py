@@ -4,6 +4,7 @@ from sklearn.metrics import classification_report
 
 categories = ["deleted"]
 
+user = "banana"
 
 def to_binary(predictions):
     for category in categories:
@@ -24,8 +25,8 @@ def get_f1_results(truth, predictions, name):
      ##        precision    recall  f1-score   support
 
 if __name__ == "__main__":
-    truth = pd.read_csv("/Users/sebastian/Desktop/Betty Example/truth.csv")
+    truth = pd.read_csv("/Users/"+user+"/Desktop/Betty Example/truth.csv")
 
-    prediction1 = pd.read_csv("/Users/sebastian/Desktop/Betty Example/prediction.csv")
+    prediction1 = pd.read_csv("/Users/"+user+"/Desktop/Betty Example/prediction.csv")
 
     get_f1_results(truth, prediction1, "Prediction 1")

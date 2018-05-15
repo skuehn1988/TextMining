@@ -3,10 +3,13 @@
 
 import csv
 
-path = "/Users/sebastian/Desktop/Fasttext_kaggle/"
-input_file = "/Users/sebastian/Desktop/Fasttext_kaggle/clean.csv"
-output_file = "/Users/sebastian/Desktop/Fasttext_kaggle/toxic_output.csv"
-output_file_hate = "/Users/sebastian/Desktop/Fasttext_kaggle/hate_output.csv"
+user = "banana"
+
+
+path = "/Users/"+user+"/Desktop/Fasttext_kaggle/"
+input_file = "/Users/"+user+"/Desktop/Fasttext_kaggle/clean.csv"
+output_file = "/Users/"+user+"/Desktop/Fasttext_kaggle/toxic_output.csv"
+output_file_hate = "/Users/"+user+"/Desktop/Fasttext_kaggle/hate_output.csv"
 
 
 def blacklist(string):
