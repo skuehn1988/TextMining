@@ -37,8 +37,8 @@ if __name__ == "__main__":
         input=train_data, epoch=1
     )
     print_results(*model.test(valid_data))
-    model.save_model("/Users/sebastian/Desktop/Fasttext_kaggle/kaggle_model.bin")
+    model.save_model("/Users/"+user+"/Desktop/Fasttext_kaggle/kaggle_model.bin")
 
     model.quantize(input=train_data, qnorm=True, retrain=True, cutoff=100000)
     print_results(*model.test(valid_data))
-    model.save_model("/Users/sebastian/Desktop/Fasttext_kaggle/cooking.ftz")
+    model.save_model("/Users/"+user+"/Desktop/Fasttext_kaggle/cooking.ftz")
