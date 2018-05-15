@@ -16,6 +16,7 @@ from __future__ import division, absolute_import, print_function
 import os
 from fastText import train_supervised
 
+user = "banana"
 
 def print_results(N, p, r):
     print("N\t" + str(N))
@@ -23,8 +24,8 @@ def print_results(N, p, r):
     print("R@{}\t{:.3f}".format(1, r))
 
 if __name__ == "__main__":
-    train_data = os.path.join(os.getenv("/Users/sebastian/Desktop/Fasttext_kaggle/", ''), '/Users/sebastian/Desktop/Fasttext_kaggle/train.txt')
-    valid_data = os.path.join(os.getenv("/Users/sebastian/Desktop/Fasttext_kaggle/", ''), '/Users/sebastian/Desktop/Fasttext_kaggle/test.txt')
+    train_data = os.path.join(os.getenv("/Users/"+user+"/Desktop/Fasttext_kaggle/", ''), '/Users/'+user+'/Desktop/Fasttext_kaggle/train.txt')
+    valid_data = os.path.join(os.getenv("/Users/"+user+"/Desktop/Fasttext_kaggle/", ''), '/Users/'+user+'/Desktop/Fasttext_kaggle/test.txt')
 
     # train_supervised uses the same arguments and defaults as the fastText cli
     model = train_supervised(
