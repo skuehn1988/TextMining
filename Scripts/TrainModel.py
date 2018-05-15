@@ -13,11 +13,13 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division, absolute_import, print_function
 
+
 import os
-#from fastText import train_supervised
-import fasttext
+from fastText import train_supervised
+
 
 user = "banana"
+
 
 def print_results(N, p, r):
     print("N\t" + str(N))
