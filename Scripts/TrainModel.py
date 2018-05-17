@@ -37,7 +37,7 @@ if __name__ == "__main__":
     print_results(*model.test(valid_data))
 
     model = train_supervised(
-        input=train_data, epoch=1
+        input=train_data, epoch=2
     )
     print_results(*model.test(valid_data))
     model.save_model("/Users/"+user+"/Desktop/Fasttext_kaggle/kaggle_model.bin")
