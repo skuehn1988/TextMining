@@ -41,7 +41,7 @@ def writeToFile(writer, id, content, deleted):
 #     string.replace("  ", " ")
 #     return
 
-# __label__ [-9:10]
+# __label__ [9:11]
 
 with open(input_file, "r", encoding="utf-8") as csvfile:
     output_file = open(output_file, "w", encoding="utf-8")
@@ -50,36 +50,14 @@ with open(input_file, "r", encoding="utf-8") as csvfile:
     data = [row for row in reader]
     # header here
     writer.writerow(["deleted"])
-    ids = 0
-    # set number of ratio here or set a very high number no ratio
-    truth = 200000
-    false = 200000
-     # place column name here (toxic , identity_hate)
+    # place column name here (toxic , identity_hate)
     name_of_row = "deleted"
     for row in data:
-        if(row[name_of_row][9:11] != "2" ):#and false >= 0 or row["toxic"] != "False" and false >= 0):
-            false = false-1
-            #id = row["id"]
-            content = row["deleted"]
-            content = blacklist(content)
-            deleted = row[name_of_row]
-            print([id, content, deleted])
-            writeToFile(writer, id, content, deleted)
-            ids = ids +1
+        row[name_of_row][9:11]#and false >= 0 or row["toxic"] != "False" and false >= 0):
+        content = row["deleted"]
+        deleted = row[name_of_row]
+        print([id, content, deleted])
+        writeToFile(writer, id, content, deleted)
 
-
-        # if(row[name_of_row] != "1" and truth >= 0 or row["toxic"] != "True" and truth >= 0):
-        #     truth = truth-1
-        #     #id = row["id"]
-        #     content = row["deleted"]
-        #     content = blacklist(content)
-        #     deleted = row[name_of_row]
-        #     print([id, content, deleted])
-        #     writeToFile(writer, id, content, deleted)
-        #     ids = ids +1
-        if(truth == 0 and false == 0):
-            output_file.close()
-            exit()
-        else:
-            print("truth : ", truth)
-            print("false : ", false)
+    output_file.close()
+    exit()
