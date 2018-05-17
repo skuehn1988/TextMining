@@ -17,8 +17,8 @@ import csv
 # Todo https://en.wikipedia.org/wiki/Bootstrap_aggregating
 
 
-input_file = "/Users/banana/Desktop/TextMining/predection_v2.csv"
-output_file = "/Users/banana/Desktop/TextMining/truth_prediction_v2.csv"
+input_file = "/Users/banana/Desktop/TextMining/test_hate__.csv"
+output_file = "/Users/banana/Desktop/TextMining/nothingbutthetruth.csv"
 
 def blacklist(string):
     string = str(string)
@@ -34,7 +34,7 @@ def writeToFile(writer, id, content, deleted):
     # id = 1,2,3
     # content = comments
     # deleted = 0 or 1
-    writer.writerow([deleted[9:]])
+    writer.writerow([deleted[9:11]])
 
 # def deleteSpaces(string):
 #     string = str(string)
@@ -57,7 +57,7 @@ with open(input_file, "r", encoding="utf-8") as csvfile:
      # place column name here (toxic , identity_hate)
     name_of_row = "deleted"
     for row in data:
-        if(row[name_of_row] != "0" and false >= 0 or row["toxic"] != "False" and false >= 0):
+        if(row[name_of_row][9:11] != "2" ):#and false >= 0 or row["toxic"] != "False" and false >= 0):
             false = false-1
             #id = row["id"]
             content = row["deleted"]
