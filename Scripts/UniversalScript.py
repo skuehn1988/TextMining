@@ -20,6 +20,30 @@ import csv
 input_file = "/Users/banana/Desktop/TextMining/test_hate__.csv"
 output_file = "/Users/banana/Desktop/TextMining/nothingbutthetruth.csv"
 
+# def prepare_prediction(file):
+#     new_input_file = "temp.csv"
+#     new_input_file = open(new_input_file, "w", encoding="utf-8")
+#     with open(file, "r", encoding="utf-8") as csv_file:
+#         reader = csv.DictReader(csv_file)
+#         new_input_file = open(output_file, "w", encoding="utf-8")
+#         data = [row for row in reader]
+#         # write header
+#         writer.writerow(["deleted"])
+#         for row in data:
+#             content = row[1]
+#             writer.writerow([content])
+#         output_file.close()
+#         return new_input_file
+#
+# old_file = prepare_prediction(old_file)
+
+
+
+
+
+
+
+
 def blacklist(string):
     string = str(string)
     string = string.lower()
