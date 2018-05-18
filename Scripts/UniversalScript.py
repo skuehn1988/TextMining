@@ -17,30 +17,12 @@ import csv
 # Todo https://en.wikipedia.org/wiki/Bootstrap_aggregating
 
 
-input_file = "/Users/banana/Desktop/TextMining/test_hate__.csv"
-output_file = "/Users/banana/Desktop/TextMining/nothingbutthetruth.csv"
+input_file = "/Users/banana/Desktop/TextMining/sss.csv"
+output_file = "/Users/banana/Desktop/TextMining/truth185.csv"
 
-# def prepare_prediction(file):
-#     new_input_file = "temp.csv"
-#     new_input_file = open(new_input_file, "w", encoding="utf-8")
-#     with open(file, "r", encoding="utf-8") as csv_file:
-#         reader = csv.DictReader(csv_file)
-#         new_input_file = open(output_file, "w", encoding="utf-8")
-#         data = [row for row in reader]
-#         # write header
-#         writer.writerow(["deleted"])
-#         for row in data:
-#             content = row[1]
-#             writer.writerow([content])
-#         output_file.close()
-#         return new_input_file
-#
-# old_file = prepare_prediction(old_file)
-
-
-
-
-
+# 145k nontoxic
+#  15k toxic
+# 159k insgesamt
 
 
 
@@ -80,8 +62,10 @@ with open(input_file, "r", encoding="utf-8") as csvfile:
         row[name_of_row][9:11]#and false >= 0 or row["toxic"] != "False" and false >= 0):
         content = row["deleted"]
         deleted = row[name_of_row]
-        print([id, content, deleted])
+        #print([id, content, deleted])
         writeToFile(writer, id, content, deleted)
 
     output_file.close()
     exit()
+
+
