@@ -23,7 +23,7 @@ output_file = "/Users/banana/Desktop/TextMining/train_preprocessed_clean_identit
 def blacklist(string):
     string = str(string)
     string = string.lower()
-    blacklistedWords = ['\\n', '\\r', '@', '"', "(talk)", "/talk/", "|", "{", "}"]
+    blacklistedWords = ['\\n', '\\r', '@', '"', "(talk)", "/talk/", "|", "{", “}”, “(UTC)”]
     for x in range(len(blacklistedWords)):
         string = str(string).replace(blacklistedWords[x],"")
         string = str(string).replace("  ", " ")
