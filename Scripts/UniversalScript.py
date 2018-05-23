@@ -4,26 +4,7 @@
 import csv
 import sys
 
-# TOdo Must have
-# Done To Lower
-# done count Rows -  make percentage 159.571
-# toxic number of 0 : 144.277 number of 1 : 15.294 =  90,4/9,6
-# hate number of 0 : 158166 number of 1 : 1405
-# Done find quotes / delete
-# Todo kill Time
 
-# Todo Nice to HAve
-# Todo REST API übersetzung
-# ToDo HelpOut Embedding
-# Todo https://en.wikipedia.org/wiki/Bootstrap_aggregating
-
-# python3 /Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/UniversalScript.py input.csv output.csv
-#input_file = "/Users/banana/Desktop/TextMining/sss.csv"
-#output_file = "/Users/banana/Desktop/TextMining/truth185.csv"
-
-# 145k nontoxic
-#  15k toxic
-# 159k insgesamt
 
 
 try:
@@ -52,15 +33,10 @@ def blacklist(string):
 
 
 def writeToFile(writer, id, content, deleted):
-    # id = 1,2,3
-    # content = comments
-    # deleted = 0 or 1
+
     writer.writerow([deleted[9:11]])
 
-# def deleteSpaces(string):
-#     string = str(string)
-#     string.replace("  ", " ")
-#     return
+
 
 # __label__ [9:11]
 
