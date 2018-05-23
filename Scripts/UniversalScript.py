@@ -32,7 +32,7 @@ def writeToFile(writer, id, content, deleted):
 # __label__ [9:11]
 
 with open(input_file, "r", encoding="utf-8") as csvfile:
-    output_file = open("/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/"+str(output_file), "w", encoding="utf-8")
+    output_file = open(output_file, "w", encoding="utf-8")
     writer = csv.writer(output_file)
     reader = csv.DictReader(csvfile)
     data = [row for row in reader]
@@ -46,9 +46,9 @@ with open(input_file, "r", encoding="utf-8") as csvfile:
         deleted = row[name_of_row]
         #print([id, content, deleted])
         writeToFile(writer, id, content, deleted)
-    print("Universal Script : task done")
-    print("/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Input/")
-    print("/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/")
+    #print("Universal Script : task done")
+    #print("/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Input/")
+    #print("/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/")
     output_file.close()
     exit()
 
