@@ -17,7 +17,7 @@ import sys
 # ToDo HelpOut Embedding
 # Todo https://en.wikipedia.org/wiki/Bootstrap_aggregating
 
-
+# python3 /Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/UniversalScript.py input.csv output.csv
 #input_file = "/Users/banana/Desktop/TextMining/sss.csv"
 #output_file = "/Users/banana/Desktop/TextMining/truth185.csv"
 
@@ -36,10 +36,10 @@ except:
     print("For example: ")
     print("input.csv and output.csv")
     input_file = input()
-    input_file = "/Users/banana/Desktop/TextMining/"+str(input_file)
+    input_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Input/"+str(input_file)
     print("now output.csv file name")
     output_file = input()
-    output_file = "/Users/banana/Desktop/TextMining/"+str(output_file)
+    output_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/"+str(output_file)
 
 def blacklist(string):
     string = str(string)
@@ -65,7 +65,7 @@ def writeToFile(writer, id, content, deleted):
 # __label__ [9:11]
 
 with open(input_file, "r", encoding="utf-8") as csvfile:
-    output_file = open(output_file, "w", encoding="utf-8")
+    output_file = open("/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/"+str(output_file), "w", encoding="utf-8")
     writer = csv.writer(output_file)
     reader = csv.DictReader(csvfile)
     data = [row for row in reader]
@@ -79,8 +79,11 @@ with open(input_file, "r", encoding="utf-8") as csvfile:
         deleted = row[name_of_row]
         #print([id, content, deleted])
         writeToFile(writer, id, content, deleted)
-
+    print("Universal Script : task done")
+    print("/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Input/")
+    print("/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/")
     output_file.close()
     exit()
+
 
 
