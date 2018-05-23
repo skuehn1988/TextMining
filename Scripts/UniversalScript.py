@@ -2,6 +2,7 @@
 
 
 import csv
+import sys
 
 # TOdo Must have
 # Done To Lower
@@ -17,14 +18,28 @@ import csv
 # Todo https://en.wikipedia.org/wiki/Bootstrap_aggregating
 
 
-input_file = "/Users/banana/Desktop/TextMining/sss.csv"
-output_file = "/Users/banana/Desktop/TextMining/truth185.csv"
+#input_file = "/Users/banana/Desktop/TextMining/sss.csv"
+#output_file = "/Users/banana/Desktop/TextMining/truth185.csv"
 
 # 145k nontoxic
 #  15k toxic
 # 159k insgesamt
 
 
+try:
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
+except:
+    print("for bash: python UniversalScript.py /Users/username/Desktop/Textming/input.csv /Users/username/Desktop/Textming/ouput.csv ")
+    print("No input_file and output_file provided.")
+    print("Place a file with csv ending")
+    print("For example: ")
+    print("input.csv and output.csv")
+    input_file = input()
+    input_file = "/Users/banana/Desktop/TextMining/"+str(input_file)
+    print("now output.csv file name")
+    output_file = input()
+    output_file = "/Users/banana/Desktop/TextMining/"+str(output_file)
 
 def blacklist(string):
     string = str(string)

@@ -49,7 +49,11 @@ if __name__ == "__main__":
     #model.save_model("/Users/"+user+"/Desktop/Fasttext_kaggle/cooking.ftz")
 
 print("fertig")
+
+
 # now run this
+
+
 # Dominiks-MacBook-Pro:fastText-0.1.0 banana$ ./fasttext predict /Users/banana/Desktop/Fasttext_kaggle/toxic_model_v3.bin /Users/banana/Desktop/Fasttext_kaggle/test_toxic.txt > /Users/banana/Desktop/Fasttext_kaggle/predection_d6.csv
 # Dominiks-MacBook-Pro:fastText-0.1.0 banana$
 
