@@ -6,15 +6,44 @@
 #
 from __future__ import absolute_import
 from __future__ import division
+from __future__ import division, absolute_import, print_function
 from __future__ import print_function
 from __future__ import unicode_literals
-from __future__ import division, absolute_import, print_function
-
-
-
 
 import os
+import sys
+
 from fastText import train_supervised
+
+new_output_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Models/test.txt"
+
+try:
+    # minCount = sys.argv[1]
+    # wordNgrams = sys.argv[2]
+    # minn = sys.argv[3]
+    # maxn = sys.argv[4]
+    # lr = sys.argv[5]
+    # dim = sys.argv[6]
+    # epoch = sys.argv[7]
+    # bucket = sys.argv[8]
+    # loss = sys.argv[9]
+
+    minCount = int(sys.argv[1])
+    wordNgrams = int(sys.argv[2])
+    minn = int(sys.argv[3])
+    maxn = int(sys.argv[4])
+    lr = float(sys.argv[5])
+    dim = int(sys.argv[6])
+    epoch = int(sys.argv[7])
+    bucket = int(sys.argv[8])
+    loss = sys.argv[9]
+
+except:
+    print("for bash: python TrainModelScript.py  minCount wordNgrams minn maxn lr dim epoch bucket loss")
+    print(" example : python3 TrainModelScript.py 1 2 1 1 0.8 100 75 2000000 ns")
+    print("No input_file and output_file provided.")
+    print("Place a file with csv ending")
+    print("For example: ")
 
 
 user = "banana"
@@ -26,25 +55,20 @@ def print_results(N, p, r):
 
 
 if __name__ == "__main__":
-    train_data = os.path.join(os.getenv("/Users/"+user+"/Desktop/Fasttext_kaggle/", ''), "/Users/"+user+"/Desktop/Fasttext_kaggle/train_toxic.txt")
+    train_data = os.path.join(os.getenv("/Users/"+user+"/Desktop/Fasttext_kaggle/", ''), new_output_file)
     #valid_data = os.path.join(os.getenv("/Users/"+user+"/Desktop/Fasttext_kaggle/", ''), "/Users/"+user+"/Desktop/Fasttext_kaggle/test_toxic.txt")
-
-    # Run 1     model = train_supervised(input=train_data, minCount=1, wordNgrams=2, minn=1, maxn=1, lr=0.8, dim=100, epoch=75 , bucket=2000000,loss='softmax')
-
-    # Run 2     model = train_supervised(input=train_data, minCount=1, wordNgrams=3, minn=2, maxn=2, lr=1, dim=100, epoch=100 , bucket=2000000,loss='softmax')
-
-    # Run 3     model = train_supervised(input=train_data, minCount=1, wordNgrams=2, minn=2, maxn=2, lr=1, dim=100, epoch=200 , bucket=2000000,loss='softmax')
-
-    # Run 4     model = train_supervised(input=train_data, minCount=1, wordNgrams=2, minn=2, maxn=2, lr=0.8, dim=100, epoch=150 , bucket=3000000,loss='softmax')
-
-    # Run 5     model = train_supervised(input=train_data, minCount=1, wordNgrams=2, minn=1, maxn=1, lr=0.8, dim=100, epoch=75 , bucket=2000000, loss='hs')
-
-    # Run 6     model = train_supervised(input=train_data, minCount=1, wordNgrams=2, minn=1, maxn=1, lr=0.8, dim=100, epoch=75 , bucket=2000000, loss='ns')
 
 
     # train_supervised uses the same arguments and defaults as the fastText cli
-    model = train_supervised(input=train_data, minCount=1, wordNgrams=2, minn=1, maxn=1, lr=0.8, dim=100, epoch=75 , bucket=2000000, loss='ns')
-    #model = train_supervised(input=train_data, epoch=1)
+
+    model = train_supervised(input=train_data, minCount=minCount, wordNgrams=wordNgrams, minn=minn, maxn=maxn, lr=lr, dim=dim, epoch=epoch, bucket=bucket, loss=loss)
+
+    #model = train_supervised(input=train_data, minCount=1, wordNgrams=2, minn=1, maxn=1, lr=0.8, dim=100, epoch=75 , bucket=2000000, loss='ns')
+
+
+
+
+
     model.save_model("/Users/"+user+"/Desktop/Fasttext_kaggle/toxic_model_v3.bin")
     #model.save_model("/Users/"+user+"/Desktop/Fasttext_kaggle/cooking.ftz")
 
