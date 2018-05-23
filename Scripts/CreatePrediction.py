@@ -1,7 +1,7 @@
 import os
 import sys
-
-
+import fastText
+from sklearn.linear_model import LogisticRegression
 
 
 user = "banana"
@@ -14,10 +14,13 @@ prediction = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Script
 # /Users/sebastian/Desktop/Fasttext_kaggle/predection_h1.csv
 #
 
-# ModelFile can be deleted everytime
 modelFile = "/Users/"+user+"/Desktop/Fasttext_kaggle/toxic_model_v3.bin"
-fastText = "./Users/banana/Desktop/fastText-0.1.0/fastText"
+fastText = "./Desktop/fastText-0.1.0/fasttext"
+
+file = open(test_file, "r")
+model = open(modelFile)
 
 
 
-os.system("python3 "+str(fastText)+" predict "+modelFile+" "+test_file+" > "+prediction)
+# ModelFile can be deleted everytime
+os.system(str(fastText)+" predict "+modelFile+" "+test_file+" > "+prediction)

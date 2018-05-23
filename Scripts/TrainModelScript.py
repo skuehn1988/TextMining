@@ -70,7 +70,20 @@ if __name__ == "__main__":
 
 
     model.save_model("/Users/"+user+"/Desktop/Fasttext_kaggle/toxic_model_v3.bin")
-    #model.save_model("/Users/"+user+"/Desktop/Fasttext_kaggle/cooking.ftz")
+
+    file = open(new_output_file, "r")
+
+
+
+
+    for line in file:
+        line_blubb = line.rstrip()
+        pred = model.predict(line_blubb)
+    print(pred)
+#   print(line.rstrip())
+    file.close()
+
+
 
 print("fertig")
 
