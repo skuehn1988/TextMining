@@ -1,11 +1,13 @@
 import csv
+import shutil
 import sys
 import os
 
 template_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/template.txt"
 old_output_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/output.csv"
-new_output_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/test.txt"
+new_output_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Models/test.txt"
 
+shutil.copyfile(template_file, new_output_file)
 
 
 
