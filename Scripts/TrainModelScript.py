@@ -77,10 +77,11 @@ if __name__ == "__main__":
 
 
     for line in file:
+
         line_blubb = line.rstrip()
         pred = model.predict(line_blubb)
-    print(pred)
-#   print(line.rstrip())
+        print(pred)
+
     file.close()
 
 
