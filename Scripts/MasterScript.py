@@ -7,8 +7,8 @@ CsvToTxt = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/
 TrainModelScript = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/TrainModelScript.py"
 CreatePrediciton = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/CreatePrediction.py"
 F1ScoreCalculator = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/F1ScoreCalculator.py"
-train = ""
-test = ""
+train_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Input/2500.train.txt"
+test_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Input/2500.test.txt"
 
 try:
     input_file = sys.argv[1]
@@ -32,7 +32,7 @@ except:
 os.system("python3 "+str(UniversalScript)+" "+"/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Input/"+str(input_file)+" "+"/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/"+str(output_file))
 os.system("python3 "+str(CsvToTxt)+" "+"/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/"+str(output_file)+" "+"/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Models/"+str(csvtotxt_file))
 os.system("python3 "+str(TrainModelScript)+" "+minCount+" "+wordNgrams+" "+minn+" "+maxn+" "+lr+" "+dim+" "+epoch+" "+bucket+" "+loss)
-#os.system("python3 "+str(CreatePrediciton)+" "+)
+os.system("python3 "+str(CreatePrediciton)+" "+test_file)
 
 
 
