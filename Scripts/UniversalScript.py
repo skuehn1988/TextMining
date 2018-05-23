@@ -22,15 +22,6 @@ except:
     output_file = input()
     output_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/"+str(output_file)
 
-def blacklist(string):
-    string = str(string)
-    string = string.lower()
-    blacklistedWords = ['\\n', '\\r', '@', '"', "(talk)", "/talk/"]
-    for x in range(len(blacklistedWords)):
-        string = str(string).replace(blacklistedWords[x],"")
-        string = str(string).replace("  ", " ")
-    return string
-
 
 def writeToFile(writer, id, content, deleted):
 
