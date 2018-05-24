@@ -6,7 +6,7 @@ from sklearn.linear_model import LogisticRegression
 
 user = "banana"
 
-test_file = sys.argv[1]
+test_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Models/test.txt"
 prediction = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Output/prediction.csv"
 #
 #./fasttext predict /Users/sebastian/Desktop/Fasttext_kaggle/hate_model_v1.bin
@@ -23,4 +23,9 @@ model = open(modelFile)
 
 
 # ModelFile can be deleted everytime
-os.system(str(fastText)+" predict "+modelFile+" "+test_file+" > "+prediction)
+try:
+    x = str(fastText)+" predict "+modelFile+" "+test_file+" > "+prediction
+    os.system(x)
+    print(x)
+except:
+    print("done")

@@ -25,11 +25,7 @@ except:
 
 def writeToFile(writer, id, content, deleted):
 
-    writer.writerow([deleted[9:11]])
-
-
-
-# __label__ [9:11]
+    writer.writerow([deleted[9:10]])
 
 with open(input_file, "r", encoding="utf-8") as csvfile:
     output_file = open(output_file, "w", encoding="utf-8")

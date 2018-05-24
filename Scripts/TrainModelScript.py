@@ -15,7 +15,7 @@ import sys
 
 from fastText import train_supervised
 
-new_output_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Models/test.txt"
+new_output_file = "/Users/banana/PycharmProjects/TextMiningCleaning/TextMining/Scripts/Models/train.txt"
 
 try:
     # minCount = sys.argv[1]
@@ -54,6 +54,7 @@ def print_results(N, p, r):
     print("R@{}\t{:.3f}".format(1, r))
 
 
+
 if __name__ == "__main__":
     train_data = os.path.join(os.getenv("/Users/"+user+"/Desktop/Fasttext_kaggle/", ''), new_output_file)
     #valid_data = os.path.join(os.getenv("/Users/"+user+"/Desktop/Fasttext_kaggle/", ''), "/Users/"+user+"/Desktop/Fasttext_kaggle/test_toxic.txt")
@@ -74,15 +75,14 @@ if __name__ == "__main__":
     file = open(new_output_file, "r")
 
 
-
-
-    for line in file:
-
-        line_blubb = line.rstrip()
-        pred = model.predict(line_blubb)
-        print(pred)
-
-    file.close()
+    #
+    # for line in file:
+    #
+    #     line_blubb = line.rstrip()
+    #     pred = model.predict(line_blubb)
+    # print(pred)
+    #
+    # file.close()
 
 
 
